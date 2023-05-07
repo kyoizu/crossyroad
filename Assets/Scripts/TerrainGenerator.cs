@@ -10,10 +10,11 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private List<TerrainData> terrainDatas = new List<TerrainData>();
     [SerializeField] private Transform terrainHolder;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text scoreText2;
     private List<GameObject> currentTerrains = new List<GameObject>();
     private Vector3 currentPosition = new Vector3(0,0,-4);
     private float score;
-    
+    int skor = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class TerrainGenerator : MonoBehaviour
         {
             int whichTerrain = Random.Range(0, terrainDatas.Count);
             int terrainInSuccession = Random.Range(1, terrainDatas[whichTerrain].maxInSuccession);
+            
             for (int i = 0; i < terrainInSuccession; i++)
             {
                 GameObject terrain = Instantiate(terrainDatas[whichTerrain].possibleTerrain[Random.Range(0, terrainDatas[whichTerrain].possibleTerrain.Count)],
@@ -50,6 +52,7 @@ public class TerrainGenerator : MonoBehaviour
                 currentTerrains.Add(terrain);
                 if(!isStart)
                 {
+                    skor++;
                     //if(currentTerrains.Count > maxTerrainCount)
                     //{
                     //    Destroy(currentTerrains[0]);
@@ -61,6 +64,8 @@ public class TerrainGenerator : MonoBehaviour
 
                 }
                 currentPosition.z++;
+                scoreText.text = ""+skor;
+                scoreText2.text = ""+skor;
                 //Mathf.Round(score);
                 //scoreText.text = "" + score;
                 
@@ -68,7 +73,9 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
-            score += 0.005f;
-        }
+    private void FixedUpdate() 
+    {
+        score += 0.005f;
+    }
+    
 }
