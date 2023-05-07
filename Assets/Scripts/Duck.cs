@@ -36,7 +36,10 @@ public class Duck : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            
+            if(transform.position.z < -1)
+            {
+                return;
+            }
             direction += Vector3.back;
         }
         else if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -84,7 +87,8 @@ public class Duck : MonoBehaviour
         if(collision.collider.GetComponent<Tree>() != null)
         {
             scoreText.text = "nabrak";
-            Vector3 direction = Vector3.zero;
+            Destroy(gameObject);
+            scoreboard.SetActive(true);
         }
     }
 }

@@ -50,11 +50,11 @@ public class TerrainGenerator : MonoBehaviour
                 currentTerrains.Add(terrain);
                 if(!isStart)
                 {
-                    if(currentTerrains.Count > maxTerrainCount)
-                    {
-                        Destroy(currentTerrains[0]);
-                        currentTerrains.RemoveAt(0);
-                    }
+                    //if(currentTerrains.Count > maxTerrainCount)
+                    //{
+                    //    Destroy(currentTerrains[0]);
+                    //    currentTerrains.RemoveAt(0);
+                    //}
                 }
                 else
                 {
